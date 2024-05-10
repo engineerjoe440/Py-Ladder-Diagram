@@ -1,5 +1,5 @@
 ################################################################################
-"""PyLadderDiag - Draw Ladder Diagrams as SVG in Python."""
+"""PyLadderDiag - Draw Ladder Diagrams Programmatically in Python."""
 ################################################################################
 
 from enum import Enum
@@ -64,6 +64,21 @@ class NegatedContact(LadderElement):
 
     ascii: str = "─┤/├─"
 
+class RisingEdgeContact(LadderElement):
+    """Rising Edge Contact Element for Ladder Diagrams."""
+
+    ascii: str = "─┤↑├─"
+
+class FallingEdgeContact(LadderElement):
+    """Falling Edge Contact Element for Ladder Diagrams."""
+
+    ascii: str = "─┤↓├─"
+
+class EdgeContact(LadderElement):
+    """Edge Contact Element for Ladder Diagrams."""
+
+    ascii: str = "─┤↕├─"
+
 class Coil(LadderElement):
     """Coil Element for Ladder Diagrams."""
 
@@ -74,4 +89,22 @@ class NegatedCoil(LadderElement):
     """Negated Coil Element for Ladder Diagrams."""
 
     ascii: str = "─(/)"
+    justification: Justification = Justification.RIGHT
+
+class SetCoil(LadderElement):
+    """Set Coil Element for Ladder Diagrams."""
+
+    ascii: str = "─(S)"
+    justification: Justification = Justification.RIGHT
+
+class ResetCoil(LadderElement):
+    """Set Coil Element for Ladder Diagrams."""
+
+    ascii: str = "─(R)"
+    justification: Justification = Justification.RIGHT
+
+class ToggleCoil(LadderElement):
+    """Set Coil Element for Ladder Diagrams."""
+
+    ascii: str = "─(T)"
     justification: Justification = Justification.RIGHT

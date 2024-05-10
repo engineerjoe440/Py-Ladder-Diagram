@@ -1,5 +1,5 @@
 ################################################################################
-"""PyLadderDiag - Draw Ladder Diagrams as SVG in Python."""
+"""PyLadderDiag - Draw Ladder Diagrams Programmatically in Python."""
 ################################################################################
 
 from enum import Enum
