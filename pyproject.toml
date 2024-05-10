@@ -40,3 +40,6 @@ match-dir = "pyld/"
 Home = "https://github.com/engineerjoe440/pyld"
 Repository = "https://github.com/engineerjoe440/pyld"
 Issues = "https://github.com/engineerjoe440/pyld/issues"
+
+[tool.flit.module]
+name = "pyld"
