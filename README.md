@@ -1,16 +1,20 @@
 # PyLD
+
 Ladder Logic Diagrams written in Python.
 
 ## Installation
 
-:information_source: TBD
+Install with `pip`:
 
+```shell
+pip install py-ladder-diagram
+```
 
 ## Usage
 
 ```python
-from PyLD import Ladder, Rung
-from PyLD.elements import Coil, Contact, NegatedContact
+from pyld import Ladder, Rung
+from pyld.elements import Coil, Contact, NegatedContact
 
 Ladder(
     Rung(

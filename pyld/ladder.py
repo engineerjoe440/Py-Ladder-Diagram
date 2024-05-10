@@ -52,8 +52,8 @@ class Ladder:
 
     Examples
     --------
-    >>> from PyLD import Ladder, Rung
-    >>> from PyLD.elements import Coil, Contact, NegatedContact
+    >>> from pyld import Ladder, Rung
+    >>> from pyld.elements import Coil, Contact, NegatedContact
     >>> Ladder(
     >>>     Rung(
     >>>         Contact("In1"),
