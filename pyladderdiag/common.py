@@ -2,6 +2,9 @@
 """PyLadderDiag - Draw Ladder Diagrams as SVG in Python."""
 ################################################################################
 
-from .ladder import Ladder, Rung
+from enum import Enum
 
-__version__ = "0.0.0"
+class RenderStyle(str, Enum):
+    """Rendering Style."""
+
+    ASCII = "ASCII"
