@@ -1,7 +1,7 @@
 # Test a Rung will be Rendered as ASCII
 
-from pyladderdiag import Ladder, Rung
-from pyladderdiag.elements import Coil, Contact, NegatedCoil, NegatedContact
+from pyld import Ladder, Rung
+from pyld.elements import Coil, Contact, NegatedCoil, NegatedContact
 
 SIMPLE_LADDER = """\
 █

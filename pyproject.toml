@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "pyladderdiag"
+name = "pyld"
 authors = [{name = "Joe Stanley", email = "engineerjoe440@yahoo.com"}]
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -28,13 +28,15 @@ test = [
 [tool.pytest.ini_options]
 testpaths = [
     "tests",
-    "pyladderdiag",
+    "pyld",
 ]
 addopts = "--pydocstyle --xdoctest"
 
 [tool.pydocstyle]
 convention = "numpy"
-match-dir = "pyladderdiag/"
+match-dir = "pyld/"
 
 [project.urls]
-Home = "https://github.com/engineerjoe440/pyladderdiag"
+Home = "https://github.com/engineerjoe440/pyld"
+Repository = "https://github.com/engineerjoe440/pyld"
+Issues = "https://github.com/engineerjoe440/pyld/issues"

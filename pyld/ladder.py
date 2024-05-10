@@ -1,5 +1,5 @@
 ################################################################################
-"""PyLadderDiag - Draw Ladder Diagrams Programmatically in Python."""
+"""PyLD - Draw Ladder Diagrams Programmatically in Python."""
 ################################################################################
 
 from typing import Union
@@ -52,8 +52,8 @@ class Ladder:
 
     Examples
     --------
-    >>> from pyladderdiag import Ladder, Rung
-    >>> from pyladderdiag.elements import Coil, Contact, NegatedContact
+    >>> from PyLD import Ladder, Rung
+    >>> from PyLD.elements import Coil, Contact, NegatedContact
     >>> Ladder(
     >>>     Rung(
     >>>         Contact("In1"),

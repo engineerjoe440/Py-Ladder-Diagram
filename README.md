@@ -1,4 +1,4 @@
-# PyLadderDiag
+# PyLD
 Ladder Logic Diagrams written in Python.
 
 ## Installation
@@ -9,8 +9,8 @@ Ladder Logic Diagrams written in Python.
 ## Usage
 
 ```python
-from pyladderdiag import Ladder, Rung
-from pyladderdiag.elements import Coil, Contact, NegatedContact
+from PyLD import Ladder, Rung
+from PyLD.elements import Coil, Contact, NegatedContact
 
 Ladder(
     Rung(
