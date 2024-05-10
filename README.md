@@ -1,4 +1,4 @@
-# PyLD
+# Py-Ladder-Diagram
 
 Ladder Logic Diagrams written in Python.
 
