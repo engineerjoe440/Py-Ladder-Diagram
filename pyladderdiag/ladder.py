@@ -16,7 +16,7 @@ class Rung:
         """Prepare the Class Attributes."""
         self.elements = list(elements)
 
-    def ascii_string(self) -> list[str]:
+    def ascii(self) -> list[str]:
         """Generate a List of the Strings for Each 'Row' of Content."""
         rows = {i: "" for i in range(self.depth)}
         for elem in self.elements:
@@ -43,11 +43,38 @@ class Rung:
         """Render the Ladder Rung as a String."""
         match style:
             case RenderStyle.ASCII:
-                return self.ascii_string()
+                return self.ascii()
 
 
 class Ladder:
-    """A Ladder Diagram to Consist of One or More Ladder Rungs."""
+    """
+    A Ladder Diagram to Consist of One or More Ladder Rungs.
+
+    Examples
+    --------
+    >>> from pyladderdiag import Ladder, Rung
+    >>> from pyladderdiag.elements import Coil, Contact, NegatedContact
+    >>> Ladder(
+    >>>     Rung(
+    >>>         Contact("In1"),
+    >>>         Contact("In2"),
+    >>>         Coil("Out1"),
+    >>>     ),
+    >>>     Rung(
+    >>>         Contact("In1"),
+    >>>         NegatedContact("In2"),
+    >>>         Coil("Out2"),
+    >>>     )
+    >>> )
+    >>> # Renders:
+    >>> # █
+    >>> # █     In1    In2   Out1
+    >>> # █─────┤ ├────┤ ├────( )
+    >>> # █
+    >>> # █     In1    In2   Out2
+    >>> # █─────┤ ├────┤/├────( )
+    >>> # █
+    """
 
     rungs: list[Rung]
 
@@ -55,7 +82,7 @@ class Ladder:
         """Construct the Basic Structure."""
         self.rungs = list(rungs)
 
-    def ascii_string(self) -> str:
+    def __repr__(self) -> str:
         """Represent the Ladder as a String."""
         ladder = "█"
         for rung in self.rungs:
@@ -65,11 +92,11 @@ class Ladder:
                 if row[0] == "─":
                     padding = "─" * 2
                 ladder += '\n█' + padding + row
-        ladder += "\n█"
+            ladder += "\n█"
         return ladder
 
     def render(self, style: RenderStyle = RenderStyle.ASCII) -> str:
         """Render the Ladder as a String."""
         match style:
             case RenderStyle.ASCII:
-                return self.ascii_string()
+                return repr(self)
