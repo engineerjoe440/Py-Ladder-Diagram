@@ -23,12 +23,14 @@ test = [
     "xdoctest >= 1.1.3",
     "pytest-pydocstyle >= 2.3.2",
     "pygments >= 2.18.0",
+    "pytest-readme >= 1.0.1",
 ]
 
 [tool.pytest.ini_options]
 testpaths = [
     "tests",
     "pyld",
+    "test_readme.py",
 ]
 addopts = "--pydocstyle --xdoctest"
 

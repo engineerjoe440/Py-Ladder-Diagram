@@ -10,9 +10,9 @@ from .elements import LadderElement
 class Rung:
     """Generate the Representative Structure of a Ladder-Diagram Rung."""
 
-    elements: list[LadderElement]
+    elements: list[Union[LadderElement, "Branch"]]
 
-    def __init__(self, *elements: tuple[LadderElement]) -> None:
+    def __init__(self, *elements: tuple[Union[LadderElement, "Branch"]]) -> None:
         """Prepare the Class Attributes."""
         self.elements = list(elements)
 
@@ -41,6 +41,75 @@ class Rung:
 
     def render(self, style: RenderStyle = RenderStyle.ASCII) -> Union[list[str], str]:
         """Render the Ladder Rung as a String."""
+        match style:
+            case RenderStyle.ASCII:
+                return self.ascii()
+
+
+class Branch:
+    """Generate Multiple Parallel-Connected Segments."""
+
+    rungs: list[Rung]
+
+    def __init__(self, *rungs: tuple[Rung]) -> None:
+        """Construct the Basic Structure."""
+        self.rungs = list(rungs)
+
+    def ascii(self) -> list[str]:
+        """Generate a List of the Strings for Each 'Row' of Content."""
+        branch = []
+        branching = False
+        for i, rung in enumerate(self.rungs, 1):
+            row_length = 0
+            joining = "─" in [r[-1] for r in rung.render()]
+            for row in rung.render():
+                row_length = len(row)
+                # Add Each Row's Worth of Content to the Ladder
+                if row.startswith("─"):
+                    if not branching:
+                        content = "─┬" + row
+                        post = "─┬─"
+                        branching = True
+                    elif i == self.count:
+                        content = " └" + row
+                        post = "─┘ "
+                        branching = False
+                    else:
+                        content = " ├" + row
+                        post = "─┤ "
+                elif branching:
+                    content = " │" + row
+                    post = " │ "
+                else:
+                    content = "  " + row
+                    post = "   "
+                if joining:
+                    content += post
+                branch.append(content)
+            # Add Separation
+            if branching:
+                content = " │" + (" " * row_length)
+                post = " │ "
+            else:
+                content = "  " + (" " * row_length)
+                post = "   "
+            if joining:
+                content += post
+            branch.append(content)
+        return branch
+
+    @property
+    def count(self) -> int:
+        """Evaluate the Number of Rungs."""
+        return len(self.rungs)
+
+    @property
+    def depth(self) -> int:
+        """Evaluate the Maximum Depth for Any Elements in the Rung."""
+        return sum([r.depth + 1 for r in self.rungs])
+
+    def render(self, style: RenderStyle = RenderStyle.ASCII) -> Union[list[str], str]:
+        """Render the Branch of Multiple Rungs as a String."""
         match style:
             case RenderStyle.ASCII:
                 return self.ascii()
@@ -76,9 +145,9 @@ class Ladder:
     >>> # █
     """
 
-    rungs: list[Rung]
+    rungs: list[Union[Rung, Branch]]
 
-    def __init__(self, *rungs: tuple[Rung]) -> None:
+    def __init__(self, *rungs: tuple[Rung | Branch]) -> None:
         """Construct the Basic Structure."""
         self.rungs = list(rungs)
 
