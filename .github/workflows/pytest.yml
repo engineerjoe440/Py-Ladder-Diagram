@@ -26,7 +26,7 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install flit
-        flit install --deps all
+        flit install --symlink --deps all
     - name: Test with pytest
       run: |
         pytest --xdoctest --pydocstyle
