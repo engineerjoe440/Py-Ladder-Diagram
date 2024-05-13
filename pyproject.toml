@@ -32,7 +32,7 @@ testpaths = [
     "pyld",
     "README.md",
 ]
-addopts = "--pydocstyle --xdoctest --markdown-docs --importmode=importlib"
+addopts = "--pydocstyle --xdoctest --markdown-docs --import-mode=importlib"
 
 [tool.pydocstyle]
 convention = "numpy"
