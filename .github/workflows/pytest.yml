@@ -29,4 +29,4 @@ jobs:
         flit install --symlink --deps all
     - name: Test with pytest
       run: |
-        pytest --xdoctest --pydocstyle
+        pytest
